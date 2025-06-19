@@ -1,7 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/cryptodata.py", "use": "@vercel/python" }
+    { "src": "api/prices.py", "use": "@vercel/python" }
   ]
 }
 
