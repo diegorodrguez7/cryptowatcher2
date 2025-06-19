@@ -2,6 +2,9 @@
   "version": 2,
   "builds": [
     { "src": "api/prices.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/prices", "dest": "api/prices.py" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
-
