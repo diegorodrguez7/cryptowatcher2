@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CryptoWatcher AI</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f0f2f5; }
+    h1 { color: #333; }
+    .coin { background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+    a { color: #007bff; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>💹 CryptoWatcher AI</h1>
+  <p>Consulta de precios y recomendaciones simples para BTC y ETH.</p>
+  <div id="output">Cargando...</div>
+
+  <script>
+    fetch('/api/prices')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('output');
+        container.innerHTML = '';
+        data.forEach(coin => {
+          container.innerHTML += `
+            <div class="coin">
+              <h2>${coin.name}</h2>
+              <p><strong>Precio:</strong> $${coin.price_usd}</p>
+              <p><strong>Cambio 24h:</strong> ${coin.change_24h.toFixed(2)}%</p>
+              <p><strong>Cambio 7d:</strong> ${coin.change_7d.toFixed(2)}%</p>
+              <p><strong>Volumen:</strong> $${Number(coin.volume).toLocaleString()}</p>
+              <p><strong>Recomendación:</strong> ${coin.advice}</p>
+              <p><a href="https://www.binance.com/en/register?ref=TU-CODIGO" target="_blank">Comprar en Binance</a></p>
+            </div>
+          `;
+        });
+      });
+  </script>
+</body>
+</html>
