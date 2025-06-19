@@ -2,10 +2,6 @@
   "version": 2,
   "builds": [
     { "src": "api/cryptodata.py", "use": "@vercel/python" }
-  ],
-  "routes": [
-    { "src": "/api/prices", "dest": "api/cryptodata.py" },
-    { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
 
